@@ -1,6 +1,8 @@
 # maven项目发布测试
 
-码云将域名`https://gitee.com/${user_account}/${project_name}/raw/${branch}`用于原始文件下载, 可以利用它实现一个简单的 maven 仓库. 其中,
+## gitee
+
+码云将域名`https://gitee.com/${user_account}/${project_name}/raw/${branch}`设为访问原始文件的地址, 可以利用它实现一个简单的 maven 仓库. 其中,
 
 - `${user_account}`: 该字段为账户名或组织名(看仓库属于谁);
 - `${project_name}`: 指仓库名称;
@@ -17,8 +19,8 @@
 <repositories>
     <!-- gitee -->
     <repository>
-        <id>github-repository</id>
-        <name>The Maven Repository on Github</name>
+        <id>gitee-repository</id>
+        <name>The Maven Repository on Gitee</name>
         <url>https://gitee.com/moguguai/maven-publish-test/raw/main/export</url>
     </repository>
 </repositories>
@@ -37,4 +39,26 @@
     </dependency>
 </dependencies>
 ```
+
+## github
+
+github 将域名`https://raw.githubusercontent.com/${user_account}/${project_name}/${branch}`设为访问原始文件的地址, 因此只需修改其中的仓库信息:
+
+```xml
+<repository>
+    <id>github-repository</id>
+    <name>The Maven Repository on Github</name>
+    <url>https://raw.githubusercontent.com/MoGuGuai-hzr/maven-publish-test/main/export</url>
+</repository>
+```
+
+
+
+
+
+
+
+
+
+
 
