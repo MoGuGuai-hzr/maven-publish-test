@@ -1,0 +1,117 @@
+<!-- 
+	======================================================================
+	设置xml命名空间, 简单理解就是描述哪些标签是合法的(符合指定pom版本的规范)
+	======================================================================
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 模型版本号, 指定 pom.xml 符合哪个版本的描述符, 一般不做修改 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+	======================================================================
+		设置项目的一些基本信息, 最少需要提供groupId，artifactId，version
+	======================================================================
+	-->
+    <!-- 项目所属组织的唯一标识, 用于定位 -->
+    <groupId>just.test.groupid</groupId>
+    <!-- 项目ID, 用于区分一个组织下不同的包 -->
+    <artifactId>math-util</artifactId>
+    <!-- 项目的版本号 -->
+    <version>1.0.0</version>
+
+    <!-- 项目名称 -->
+    <name>math</name>
+    <!-- 项目描述 -->
+    <description>数学工具包, 目前只包含一个的求平均数方法</description>
+    <!-- 打包类型, jar包也是默认的打包类型, 此外还有pom, maven-plugin, par等 -->
+    <packaging>jar</packaging>
+    <!-- 开发者列表 -->
+    <developers>
+        <developer>
+            <name>用户名</name>
+            <email>example@emails.com</email>
+        </developer>
+    </developers>
+
+    <!-- 以键值对<name>value</name>形式定义的属性, 用于指定不同资源, 通过${name}引用 -->
+    <properties>
+        <!-- source encoding -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>13</maven.compiler.source>
+        <maven.compiler.target>13</maven.compiler.target>
+        <java.version>13</java.version>
+    </properties>
+
+    <!-- 
+	======================================================================
+						项目分发信息, 即发布到哪里 
+	======================================================================
+	-->
+    <distributionManagement>
+        <repository>
+            <id>local-repository</id>
+            <name>Local Repository</name>
+            <url>file://${basedir}/export</url>
+        </repository>
+    </distributionManagement>
+
+    <!-- 
+	======================================================================
+							构建项目时使用的信息 
+	======================================================================
+	-->
+    <build>
+        <!-- 与依赖的安装类似, 指定groupId, artifactId, version, 一般可以在 https://mvnrepository.com/ 搜索, 直接复制, 将 `dependency` 改为 `plugin`. executions 下指定插件执行的操作 -->
+        <plugins>
+            <!-- 用于创建源码 -->
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-source-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- 用于创建javadoc -->
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <!-- 
+	======================================================================
+								项目的依赖 
+	======================================================================
+	-->
+    <!-- 指定groupId, artifactId, version, 一般可以在 https://mvnrepository.com/ 搜索, 直接复制 -->
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.6.1</version>
+        </dependency>
+    </dependencies>
+</project>
