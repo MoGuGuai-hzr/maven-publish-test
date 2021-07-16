@@ -2,6 +2,9 @@
 	======================================================================
 	设置xml命名空间, 简单理解就是描述哪些标签是合法的(符合指定pom版本的规范)
 	======================================================================
+    「xmlns="NameSpace"」用于声明当前 xml 文件「默认使用」的命名空间(NameSpace), 这里使用的「xmlns="http://maven.apache.org/POM/4.0.0"」表示, 当前文档默认使用的命名空间为「"http://maven.apache.org/POM/4.0.0"」;
+    「xmlns:xsi」定义了一个命名空间前缀「xsi」, 这里「xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"」表示使用了 w3c 标准的前缀, 可以使用一些属性
+    「xsi:schemaLocation="xmlns xsd"」利用前缀 xsi 的属性 schemaLocation, 将命名空间绑定到对于的 xml 概要定义(xml scheme definition). 这里「xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"」表示, 命名空间"http://maven.apache.org/POM/4.0.0"(即当前默认命名空间)中的标签属性要符合"https://maven.apache.org/xsd/maven-4.0.0.xsd"中定义的规则.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <!-- 模型版本号, 指定 pom.xml 符合哪个版本的描述符, 一般不做修改 -->
